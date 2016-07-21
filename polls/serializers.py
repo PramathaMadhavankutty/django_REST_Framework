@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import PollSubject, Poll, Vote
+from threads.models import Thread
 
 class VoteSerializer(serializers.ModelSerializer):
 
@@ -42,5 +43,10 @@ class PollSerializer(serializers.ModelSerializer):
             has_voted = True
 
         return has_voted
+
+class ThreadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Thread
+        fields = ('id', 'created_at','name', 'subject', 'user')
 
 
