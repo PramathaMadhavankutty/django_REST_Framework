@@ -1,7 +1,7 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
 from .models import Poll, Vote, Thread, PollSubject
-from serializers import PollSerializer, VoteSerializer
+from serializers import PollSerializer, VoteSerializer, ThreadSerializer
 
 class PollViewSet(generics.ListAPIView):
     queryset = Poll.objects.all()
@@ -34,3 +34,7 @@ class VoteCreateView(generics.ListCreateAPIView):
             headers = self.get_success_headers(serializer.data)
             return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ThreadViewSet(generics.ListAPIView):
+    queryset = Thread.objects.all()
+    serializer_class= ThreadSerializer
