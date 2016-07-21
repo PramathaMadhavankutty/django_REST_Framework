@@ -6,3 +6,6 @@ class PollViewSet(generics.ListAPIView):
     queryset = Poll.objects.all()
     serializer_class= PollSerializer
 
+class PollInstanceView(generics.RetrieveAPIView):
+    queryset = Poll.objects.all()
+    serializer_class = PollSerializer
