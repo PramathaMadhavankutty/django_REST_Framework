@@ -64,5 +64,6 @@ urlpatterns = [
 #Serializers Url
     url(r'^threads/polls/$', api_views.PollViewSet.as_view()),
     url(r'^threads/polls/(?P<pk>[\d]+)$',api_views.PollInstanceView.as_view(), name='poll-instance'),
+    url(r'^threads/polls/vote/(?P<thread_id>\d+)/$', api_views.VoteCreateView.as_view(), name='create_vote'),
 
 ]
