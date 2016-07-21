@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'django_forms_bootstrap',
+    'rest_framework',
     'paypal.standard.ipn',
     'debug_toolbar',
     'tinymce',
