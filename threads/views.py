@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from threads.models import Subject, Thread, Posts
 from django.shortcuts import redirect
-from django.contrib import messages, auth
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.template.context_processors import csrf
@@ -12,12 +12,12 @@ from polls.models import PollSubject
 
 
 def forum(request):
-    return render(request, 'forum/forum.html', {'subjects':Subject.objects.all()})
+    return render(request, 'forum/forum.html', {'subjects': Subject.objects.all()})
 
 
 def threads(request, subject_id):
     subject = get_object_or_404(Subject, pk=subject_id)
-    return render(request, 'forum/threads.html', {'subject':subject})
+    return render(request, 'forum/threads.html', {'subject': subject})
 
 
 @login_required
@@ -62,10 +62,10 @@ def new_thread(request, subject_id):
         poll_subject_formset = poll_subject_formset()
 
     args = {
-        'thread_form' : thread_form,
-        'post_form' : post_form,
-        'subject' : subject,
-        'poll_form':poll_form,
+        'thread_form': thread_form,
+        'post_form': post_form,
+        'subject': subject,
+        'poll_form': poll_form,
         'poll_subject_formset': poll_subject_formset,
     }
     args.update(csrf(request))
@@ -83,7 +83,7 @@ def thread(request, thread_id):
 @login_required
 def new_post(request, thread_id):
 
-    thread = get_object_or_404(Thread,pk=thread_id)
+    thread = get_object_or_404(Thread, pk=thread_id)
 
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -93,16 +93,16 @@ def new_post(request, thread_id):
             post.user = request.user
             post.save()
 
-            messages.success(request,"Your post had been added to the thread!")
+            messages.success(request, "Your post had been added to the thread!")
 
             return redirect(reverse('thread', args={thread.pk}))
     else:
         form = PostForm()
 
     args = {
-        'form':form,
-        'form_action':reverse('new_post', args={thread.id}),
-        'button_text':'Update Post'
+        'form': form,
+        'form_action': reverse('new_post', args={thread.id}),
+        'button_text': 'Update Post'
     }
     args.update(csrf(request))
     return render(request, 'forum/post_form.html', args)
@@ -128,7 +128,7 @@ def edit_post(request, thread_id, post_id):
 
     args = {
        'form': form,
-       'form_action': reverse('edit_post',  kwargs={"thread_id" : thread.id, "post_id": post.id}),
+       'form_action': reverse('edit_post',  kwargs={"thread_id": thread.id, "post_id": post.id}),
        'button_text': 'Update Post'
     }
     args.update(csrf(request))
@@ -156,8 +156,8 @@ def thread_vote(request, thread_id, subject_id):
     subject = thread.poll.votes.filter(user=request.user)
 
     if subject:
-        messages.error(request,'Oh! it seems you already voted on this!...')
-        return redirect(reverse('thread',args={thread_id}))
+        messages.error(request, 'Oh! it seems you already voted on this!...')
+        return redirect(reverse('thread', args={thread_id}))
     subject = PollSubject.objects.get(id=subject_id)
 
     subject.votes.create(poll=subject.poll, user=request.user)
