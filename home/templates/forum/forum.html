@@ -7,15 +7,15 @@
             <h2> <a href="{% url 'threads' subject.id %}"> {{ subject.name }}</a> </h2>
             <p>
                 <a href="{% url 'threads' subject.id %}">
+
                     {% autoescape off %}
                         {{ subject.description }}
                     {% endautoescape %}
                 </a>
             </p>
-            <table>
+            <table class="table table-bordered">
                 <tr>
-                    <th> THREADS  </th>
-                    <th> </th>
+                    <th>THREADS</th>
                     <th> POSTS </th>
                 </tr>
                 <tr>
