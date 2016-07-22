@@ -24,6 +24,8 @@ from products import  views as product_views
 from magazines import views as magazine_views
 from threads import views as forum_views
 from polls import api_views
+from threads import api_views as thread_api_views
+
 
 
 urlpatterns = [
@@ -66,5 +68,6 @@ urlpatterns = [
     url(r'^threads/polls/(?P<pk>[\d]+)$',api_views.PollInstanceView.as_view(), name='poll-instance'),
     url(r'^threads/polls/vote/(?P<thread_id>\d+)/$', api_views.VoteCreateView.as_view(), name='create_vote'),
     url(r'^threads/$',api_views.ThreadViewSet.as_view()),
+    url(r'^post/update/(?P<pk>[\d+]+)/$',thread_api_views.PostUpdateView.as_view(), name='update-poll')
 
 ]
