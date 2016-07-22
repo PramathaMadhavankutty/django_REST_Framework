@@ -142,7 +142,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = ''
 
 STATIC_FILES_DIRS = (
-    os.path.join(BASE_DIR, "static"), # static directory at project level
+    os.path.join(BASE_DIR, 'static'), # static directory at project level
 )
 
 
@@ -163,4 +163,4 @@ PAYPAL_RECEIVER_EMAIL = 'pramatha.madhavankutty@yahoo.com'
 
 #Tinymce settings
 
-TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", "js", "tinymce", "tinymce.min.js")
+TINYMCE_JS_ROOT = os.path.join(BASE_DIR, 'static', 'js', 'tinymce', 'tinymce.min.js')
