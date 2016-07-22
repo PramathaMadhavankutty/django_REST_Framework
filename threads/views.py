@@ -60,7 +60,7 @@ def new_thread(request, subject_id):
         post_form = PostForm(request.POST)
         poll_form = PollForm()
         poll_subject_formset = poll_subject_formset()
-        
+
     args = {
         'thread_form' : thread_form,
         'post_form' : post_form,
