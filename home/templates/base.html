@@ -27,6 +27,9 @@
             {% if user.is_authenticated %}
             <li><a href="{% url 'profile' %}">Profile</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
+            <li><a href="/magazines/">Magazines</a></li>
+            <li><a href="/blog/">Our Blog</a></li>
+            <li><a href="/forum/">Forum</a></li>
             {% else %}
             <!--Email Auth-->
             <li><a href="{% url 'register' %}">Register</a></li>
@@ -35,9 +38,7 @@
 
             <!--Paypal-->
              <li><a href="/products/">Products</a></li>
-             <li><a href="/magazines/">Magazines</a></li>
-             <li><a href="/blog/">Our Blog</a></li>
-             <li><a href="/forum/">Forum</a></li>
+
 
 
 
